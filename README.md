@@ -17,7 +17,7 @@ integrated into any application or framework that supports
 
 #### Configure Strategy
 
-The Amazon authentication strategy authenticates users using an Amazon
+The ProjectSquared authentication strategy authenticates users using an ProjectSquared
 account and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which
 accepts these credentials and calls `done` providing a user, as well as
 `options` specifying a client ID, client secret, and callback URL.
@@ -25,13 +25,13 @@ accepts these credentials and calls `done` providing a user, as well as
 The client ID and secret are obtained by registering an application at the
 [Login with Project Square Developer Center](http://developer.projectsquared.com/).
 
-    passport.use(new AmazonStrategy({
+    passport.use(new ProjectSquaredStrategy({
         clientID: PROJECTSQAURED_CLIENT_ID,
         clientSecret: PROJECTSQUARED_CLIENT_SECRET,
         callbackURL: "http://127.0.0.1:3000/auth/projectsquared/callback"
       },
       function(accessToken, refreshToken, profile, done) {
-        User.findOrCreate({ amazonId: profile.id }, function (err, user) {
+        User.findOrCreate({ projectsquaredId: profile.id }, function (err, user) {
           return done(err, user);
         });
       }
@@ -49,7 +49,7 @@ application:
       passport.authenticate('projectsquared'));
 
     app.get('/auth/projectsquared/callback', 
-      passport.authenticate('amazon', { failureRedirect: '/login' }),
+      passport.authenticate('projectsquared', { failureRedirect: '/login' }),
       function(req, res) {
         // Successful authentication, redirect home.
         res.redirect('/');
