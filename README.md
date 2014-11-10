@@ -66,6 +66,11 @@ application:
 ## Credits
 
   - [Marcello Federico](http://github.com/marchfederico)
+  
+## Thanks
+
+  - [Jared Hanson](http://github.com/jaredhanson)
+
 
 ## License
 
